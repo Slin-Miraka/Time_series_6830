@@ -131,6 +131,9 @@ fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
+st.markdown("✅ Return's ACF. vs. Squred Return's ACF")
+call = st.checkbox("Return's ACF. vs. Return's PACF")
+
 fig = autocorrelation_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)
 st.pyplot(fig)
 
