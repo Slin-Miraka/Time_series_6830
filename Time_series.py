@@ -66,7 +66,7 @@ START_DATE, END_DATE = get_date()
 
 data = yf.download(symbol, start=START_DATE,end=END_DATE, adjusted=True)
 data.reset_index()
-data.index = data["Date"].dt.strftime('%Y-%m-%d').tolist()
+data.index = data["date"].dt.strftime('%Y-%m-%d').tolist()
 #data = pd.read_csv(r"C:\Users\MSI_NB\Desktop\03-Streamlit-Forecast-WebApp-main\NSE-TATAGLOBAL11.csv")
 #data = data.sort_index(ascending=False)
 
