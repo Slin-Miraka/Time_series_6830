@@ -33,7 +33,7 @@ st.set_page_config(layout="wide")  # this needs to be the first Streamlit comman
 st.title("QBUS6830 Time series Analysis for stocks")
 
 st.markdown(
-    "This app is to create a framework to modeling both mean and volatility part of a return series, under the framework delivered in QBUS6830 of USYD "
+    "This app is to create a framework to modeling both mean and volatility part of a return series, under the framework delivered in QBUS6830 of USYD. "
 )
 
 st.sidebar.title("Control Panel")
@@ -145,7 +145,7 @@ fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
-st.markdown("✅  Return's ACF. vs. Squred Return's ACF")
+st.markdown("✅    Return's ACF. vs. Squred Return's ACF")
 PACF = st.checkbox("Return's ACF. vs. Return's PACF")
 
 if PACF:
