@@ -5,14 +5,15 @@ Created on Thu Jul  1 11:54:21 2021
 @author: ShingFoon Lin
 """
 
-import matplotlib.pyplot as plt
-import copy
+
+
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
 import streamlit as st
 import yfinance as yf
 import datetime
+import matplotlib.pyplot as plt
 import seaborn
 import statsmodels.api as sm
 from scipy.stats import norm, jarque_bera, kurtosis
