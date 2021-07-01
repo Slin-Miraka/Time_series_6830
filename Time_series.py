@@ -95,9 +95,9 @@ R.plot(label = "return");#plt.legend();
 left_col.pyplot(plt)
 
 def stat(x) : 
-    return pd.Series([x.count(),round(x.min(),4),x.idxmin(),x.quantile(.25),x.median(),
-                      x.quantile(.75),x.mean(),x.max(),x.idxmax(),x.var(),
-                      x.std(),x.skew(),x.kurt()],index=['count','min','idxmin','25% quantile',
+    return pd.Series([x.count(),round(x.min(),4),x.idxmin(),round(x.quantile(.25),4),round(x.median(),4),
+                      round(x.quantile(.75),4),round(x.mean(),4),round(x.max(),4),x.idxmax(),round(x.var(),4),
+                      round(x.std(),4),round(x.skew(),4),round(x.kurt(),4)],index=['count','min','idxmin','25% quantile',
                     'median','75% quantile','mean','max','idxmax','var','std','skew','kurt'])
 
 statr = pd.DataFrame(stat(R), columns=["{}'s Return".format(symbol)]).T                                                        
