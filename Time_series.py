@@ -32,11 +32,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("QBUS6830 Time series Analysis for stocks")
 
-#st.markdown(
-#    "*Check out the methodology walk-through "
-#    "[here](https://www.crosstab.io/articles/staged-rollout-analysis) and Streamlit "
-#    "app mechanics [here](https://www.crosstab.io/articles/streamlit-review).*"
-#)
+st.markdown(
+    "This app is to create a framework to modeling both mean and volatility part of a return series, under the framework delivered in QBUS6830 of USYD "
+)
 
 st.sidebar.title("Control Panel")
 left_col, right_col = st.beta_columns((2,1))
@@ -83,6 +81,7 @@ data = yf.download(symbol, start=START_DATE,end=END_DATE, adjusted=True)
 #df = data.set_index(["Date"])
 R = np.log(data.iloc[:,4].pct_change().dropna()+1) * 100;
 
+left_col.subheader("{} price series over {} to {}".format(symbol, START_DATE, END_DATE))
 plt.figure(figsize=(20,6))
 data.iloc[:,4].plot(label = "prices");plt.legend()
 
