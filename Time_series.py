@@ -62,7 +62,7 @@ START_DATE, END_DATE = get_date()
     
     #data = yf.download(tickers, start=START_DATE,end=END_DATE, adjusted=True)
     #return data
-@st.cache
+
 data = yf.download(symbol, start=START_DATE,end=END_DATE, adjusted=True)
 
 #data = pd.read_csv(r"C:\Users\MSI_NB\Desktop\03-Streamlit-Forecast-WebApp-main\NSE-TATAGLOBAL11.csv")
