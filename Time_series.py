@@ -100,7 +100,7 @@ def stat(x) :
                     'median','75% quantile','mean','max','idxmax','var','std','skew','kurt'])
 
 statr = pd.DataFrame(stat(R), columns=["{}'s Return".format(symbol)]).T                                                        
-statr.round({'min':4,'idxmin','25% quantile':4,'median':4,'75% quantile':4,'mean':4,'max':4,'idxmax','var':4,'std':4,'skew':4,'kurt':4}) 
+statr.round({'min':4,'25% quantile':4,'median':4,'75% quantile':4,'mean':4,'max':4,'var':4,'std':4,'skew':4,'kurt':4}) 
                                                         
 def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
     if not isinstance(y, pd.Series):
