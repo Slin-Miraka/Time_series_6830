@@ -127,7 +127,7 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
     smt.graphics.plot_acf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
     plt.tight_layout()  
 
-statr = pd.DataFrame(stat(R), columns=["Details of Return"])                                                        
+statr = pd.DataFrame(stat(R), columns=["{}'s Return".format(symbol)])                                                        
                                                    
 
 right_col.subheader("Histogram of {}'s return series vs. Nomal distribution".format(symbol))
@@ -155,6 +155,7 @@ else:
 st.pyplot(fig)
 
 
+st.subheader("{}'s Return Statistics".format(symbol))
 st.write(statr.T)
 
 
