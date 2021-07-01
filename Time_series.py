@@ -62,7 +62,7 @@ START_DATE, END_DATE = get_date()
     
     #data = yf.download(tickers, start=START_DATE,end=END_DATE, adjusted=True)
     #return data
-
+@st.cache
 data = yf.download(symbol, start=START_DATE,end=END_DATE, adjusted=True)
 
 #data = pd.read_csv(r"C:\Users\MSI_NB\Desktop\03-Streamlit-Forecast-WebApp-main\NSE-TATAGLOBAL11.csv")
@@ -111,7 +111,21 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "{}'s Squared {} Autocorrelation Plot".format(simbol,Title))
-    plt.tight_layout()                                                        
+    plt.tight_layout()   
+
+def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
+    if not isinstance(y, pd.Series):
+        y = pd.Series(y)
+        
+    #with plt.style.context(style):    
+    fig = plt.figure(figsize=figsize)
+    layout = (1, 2)
+    acf_ax = plt.subplot2grid(layout, (0, 0))
+    pacf_ax = plt.subplot2grid(layout, (0, 1))
+
+    smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
+    smt.graphics.plot_acf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
+    plt.tight_layout()  
 
 statr = pd.DataFrame(stat(R), columns=["Details of Return"])                                                        
                                                    
@@ -132,9 +146,12 @@ sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
 st.markdown("✅ Return's ACF. vs. Squred Return's ACF")
-call = st.checkbox("Return's ACF. vs. Return's PACF")
+PACF = st.checkbox("Return's ACF. vs. Return's PACF")
 
-fig = autocorrelation_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)
+if PACF:
+    fig = PACF_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)    
+else:
+    fig = autocorrelation_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)
 st.pyplot(fig)
 
 
