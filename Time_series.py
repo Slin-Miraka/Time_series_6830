@@ -25,7 +25,7 @@ plt.rc("font", family="sans-serif")
 plt.rc("font", size=14)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-pd.options.display.float_format = '{:.4f}'.format
+
 
 
 
@@ -95,7 +95,7 @@ R.plot(label = "return");#plt.legend();
 left_col.pyplot(plt)
 
 def stat(x) : 
-    return pd.Series([x.count(),x.min(),x.idxmin(),x.quantile(.25),x.median(),
+    return pd.Series([x.count(),round(x.min(),4),x.idxmin(),x.quantile(.25),x.median(),
                       x.quantile(.75),x.mean(),x.max(),x.idxmax(),x.var(),
                       x.std(),x.skew(),x.kurt()],index=['count','min','idxmin','25% quantile',
                     'median','75% quantile','mean','max','idxmax','var','std','skew','kurt'])
