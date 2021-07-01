@@ -95,9 +95,12 @@ left_col.pyplot(plt)
 
 def stat(x) : 
     return pd.Series([x.count(),x.min(),x.idxmin(),x.quantile(.25),x.median(),
-                      x.quantile(.75),x.mean(),x.max(),x.idxmax(),x.mad(),x.var(),
+                      x.quantile(.75),x.mean(),x.max(),x.idxmax(),x.var(),
                       x.std(),x.skew(),x.kurt()],index=['count','min','idxmin','25% quantile',
-                    'median','75% quantile','mean','max','idxmax','mad','var','std','skew','kurt'])
+                    'median','75% quantile','mean','max','idxmax','var','std','skew','kurt'])
+
+statr = pd.DataFrame(stat(R), columns=["{}'s Return".format(symbol)]).T                                                        
+statr.round({'min':4,'idxmin','25% quantile':4,'median':4,'75% quantile':4,'mean':4,'max':4,'idxmax','var':4,'std':4,'skew':4,'kurt':4}) 
                                                         
 def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
     if not isinstance(y, pd.Series):
@@ -127,8 +130,7 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
     smt.graphics.plot_acf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
     plt.tight_layout()  
 
-statr = pd.DataFrame(stat(R), columns=["{}'s Return".format(symbol)])                                                        
-                                                   
+                                                  
 
 right_col.subheader("Histogram of {}'s return series vs. Nomal distribution".format(symbol))
 plt.figure(figsize=(8.95,6))
@@ -156,7 +158,7 @@ st.pyplot(fig)
 
 
 st.subheader("{}'s Return Statistics".format(symbol))
-st.write(statr.T)
+st.write(statr)
 
 
 
