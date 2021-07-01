@@ -25,6 +25,7 @@ plt.rc("font", family="sans-serif")
 plt.rc("font", size=14)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+pd.options.display.float_format = '{:.4f}'.format
 
 
 
