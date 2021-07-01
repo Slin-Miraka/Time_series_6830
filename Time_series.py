@@ -99,7 +99,7 @@ def stat(x) :
                       x.std(),x.skew(),x.kurt()],index=['count','min','idxmin','25% quantile',
                     'median','75% quantile','mean','max','idxmax','mad','var','std','skew','kurt'])
                                                         
-def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None):
+def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
     if not isinstance(y, pd.Series):
         y = pd.Series(y)
         
@@ -109,8 +109,8 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
     acf_ax = plt.subplot2grid(layout, (0, 0))
     acf2_ax = plt.subplot2grid(layout, (0, 1))
 
-    smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{} Autocorrelation Plot".format(Title))
-    smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "Squared {} Autocorrelation Plot".format(Title))
+    smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
+    smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "{}'s Squared {} Autocorrelation Plot".format(simbol,Title))
     plt.tight_layout()                                                        
 
 statr = pd.DataFrame(stat(R), columns=["Details of Return"])                                                        
@@ -131,7 +131,7 @@ fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
-fig = autocorrelation_plot(R, lags = 50, figsize=(20,4),Title = "Return")
+fig = autocorrelation_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)
 st.pyplot(fig)
 
 
