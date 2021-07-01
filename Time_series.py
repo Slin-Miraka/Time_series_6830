@@ -83,12 +83,13 @@ R = np.log(data.iloc[:,4].pct_change().dropna()+1) * 100;
 
 left_col.subheader("{} price series over {} to {}".format(symbol, START_DATE, END_DATE))
 plt.figure(figsize=(20,6))
-data.iloc[:,4].plot(label = "prices");plt.legend()
+data.iloc[:,4].plot(label = "prices");#plt.legend()
 
 left_col.pyplot(plt)
 
+left_col.subheader("{} return series".format(symbol))
 plt.figure(figsize=(20,6))
-R.plot(label = "return");plt.legend();
+R.plot(label = "return");#plt.legend();
 
 left_col.pyplot(plt)
 
@@ -115,6 +116,7 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
 statr = pd.DataFrame(stat(R), columns=["Details of Return"])                                                        
                                                    
 
+right_col.subheader("Histogram of {}'s return series vs. Nomal distribution".format(symbol))
 plt.figure(figsize=(8.95,6))
 _, bins, _ = plt.hist(R, 50, density=1, alpha=0.5, label="Frequency", rwidth = 20)
 mu, sigma = norm.fit(R)
@@ -123,6 +125,8 @@ plt.plot(bins, best_fit_line, label="Nomal");plt.legend()
 
 right_col.pyplot(plt)
 
+
+right_col.subheader("QQ-plot of {}'s return series".format(symbol))
 fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
