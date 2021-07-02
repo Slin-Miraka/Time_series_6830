@@ -149,13 +149,14 @@ fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
-st.markdown("✅    Return's ACF. vs. Squred Return's ACF")
-PACF = st.checkbox("Return's ACF. vs. Return's PACF")
+right_col.markdown("✅    Return's ACF. vs. Squred Return's ACF")
+PACF = right_col.checkbox("Return's ACF. vs. Return's PACF")
+lag = left_col.slider('Slide me to choose the lags', min_value=20, max_value=100, step = 5, value = 50)
 
 if PACF:
-    fig = PACF_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)    
+    fig = PACF_plot(R, lags = lag, figsize=(20,4),Title = "return", simbol = symbol)    
 else:
-    fig = autocorrelation_plot(R, lags = 50, figsize=(20,4),Title = "return", simbol = symbol)
+    fig = autocorrelation_plot(R, lags = lag, figsize=(20,4),Title = "return", simbol = symbol)
 st.pyplot(fig)
 
 
