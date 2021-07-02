@@ -85,8 +85,8 @@ R = np.log(data.iloc[:,4].pct_change().dropna()+1) * 100;
 
 left_col.subheader("{} price series over {} to {}".format(symbol, START_DATE, END_DATE))
 plt.figure(figsize=(20,6))
-data.iloc[:,4].plot(label = "prices");#plt.legend();plt.xlim(data.index.min(), data.index.max())
-
+data.iloc[:,4].plot(label = "prices");#plt.legend();
+plt.xlim(data.index.min(), data.index.max())
 left_col.pyplot(plt)
 
 left_col.subheader("{} return series".format(symbol))
