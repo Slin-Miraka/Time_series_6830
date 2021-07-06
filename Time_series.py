@@ -218,6 +218,14 @@ st.subheader("{}'s Return Statistics".format(symbol))
 #expdr.write(statr)
 st.write(statr)
 
+st.subheader("Results and Summary")
+expdr = st.beta_expander('Show the results and summary!')
+with expdr:
+    if 0.05 < jb_p_value:
+        emoji = "white_check_mark"
+    else:
+        emoji = "no_entry_sign"
+    st.write(f"***The {symbol}'s return is normal distributed.:*** {emoji}:")
 
 
 
