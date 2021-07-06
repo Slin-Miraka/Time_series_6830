@@ -159,7 +159,7 @@ left_col.subheader("ACF or PACF of {}'s return series".format(symbol))
 row2_1, row2_2 = st.beta_columns((1,5))
 
 with row2_1:
-    st.markdown("✅    Return's ACF. vs. ' 'Squred Return's ACF")
+    st.markdown("✅    Return's ACF. vs.t/ Squared Return's ACF")
     PACF = st.checkbox("Return's ACF. vs. Return's PACF")
 
 if PACF:
