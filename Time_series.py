@@ -157,11 +157,11 @@ if PACF:
     fig = PACF_plot(R, lags = lag, figsize=(20,4),Title = "return", simbol = symbol)    
 else:
     fig = autocorrelation_plot(R, lags = lag, figsize=(20,4),Title = "return", simbol = symbol)
-st.pyplot(fig)
+left_col.pyplot(fig)
 
 
-st.subheader("{}'s Return Statistics".format(symbol))
-st.write(statr)
+left_col.subheader("{}'s Return Statistics".format(symbol))
+left_col.write(statr)
 
 left_col.subheader("Testing the {}'s Return".format(symbol))
 ljbox_test = left_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
