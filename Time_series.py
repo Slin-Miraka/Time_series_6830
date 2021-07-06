@@ -91,7 +91,7 @@ data.iloc[:,4].plot(label = "prices");#plt.legend();
 #plt.xlim(data.index.min(), data.index.max())
 left_col.pyplot(plt)
 
-left_col.subheader("{} return series (Dickey-Fuller: p={0:.4f})".format(symbol, adfuller_p_value))
+left_col.subheader("{} return series".format(symbol) + "(Dickey-Fuller: p={0:.4f})".format(adfuller_p_value))
 plt.figure(figsize=(20,6))
 R.plot(label = "return");#plt.legend();
 
