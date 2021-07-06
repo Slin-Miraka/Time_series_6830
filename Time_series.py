@@ -163,6 +163,19 @@ st.pyplot(fig)
 st.subheader("{}'s Return Statistics".format(symbol))
 st.write(statr)
 
+st.subheader("Testing the {}'s Return".format(symbol))
+ljbox_test = left_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
+ARCH_test = left_col.checkbox("Check the ARCH test result for {}".format(symbol))
+if ljbox_test:
+    left_col.write("Ljung–Box test for {}".format(symbol))
+    ljboxlags = right_col.slider('Slide me to choose the lags', min_value=5, max_value=50, step = 1, value = 20)
+    left_col.write("Ljung–Box test for the {}'s return series".format(symbol))
+    sm.stats.acorr_ljungbox(R, lags=ljboxlags, return_df=True)
+    left_col.write("Ljung–Box test for the {}'s squared return series".format(symbol))
+    sm.stats.acorr_ljungbox(R**2, lags=ljboxlags, return_df=True)
+
+
+
 
 
      
