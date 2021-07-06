@@ -110,9 +110,9 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
         
     #with plt.style.context(style):    
     fig = plt.figure(figsize=figsize)
-    layout = (1, 2)
+    layout = (2, 1)
     acf_ax = plt.subplot2grid(layout, (0, 0))
-    acf2_ax = plt.subplot2grid(layout, (0, 1))
+    acf2_ax = plt.subplot2grid(layout, (1, 0))
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "{}'s Squared {} Autocorrelation Plot".format(simbol,Title))
@@ -124,9 +124,9 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
         
     #with plt.style.context(style):    
     fig = plt.figure(figsize=figsize)
-    layout = (1, 2)
+    layout = (2, 1)
     acf_ax = plt.subplot2grid(layout, (0, 0))
-    pacf_ax = plt.subplot2grid(layout, (0, 1))
+    pacf_ax = plt.subplot2grid(layout, (1, 0))
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
@@ -149,6 +149,7 @@ fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
+left.subheader("ACF or PACF of {}'s return series".format(symbol))
 left_col.markdown("✅    Return's ACF. vs. Squred Return's ACF")
 PACF = left_col.checkbox("Return's ACF. vs. Return's PACF")
 lag = right_col.slider('Slide me to choose the lags', min_value=20, max_value=100, step = 5, value = 50)
