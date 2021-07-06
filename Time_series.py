@@ -172,9 +172,25 @@ row2_2.pyplot(fig)
 
 row3_1, row3_2 = st.beta_columns((3,2))
 
+def ARCH_test(y, lags = None):
+    if isinstance(lags, int): 
+        ARCHstat = sm.stats.diagnostic.het_arch(y, nlags = lags)[0]
+        pvalue  =  sm.stats.diagnostic.het_arch(y, nlags = lags)[1]
+        df = pd.DataFrame({" ARCH_stat":  ARCHstat, "ARCH_pvalue":  pvalue}, index=[lags])
+    else:
+        ARCHstat = []
+        pvalue = []
+        for i in lags:
+            stat = sm.stats.diagnostic.het_arch(y, nlags = i)[0]
+            p =  sm.stats.diagnostic.het_arch(y, nlags = i)[1]
+            ARCHstat. append(stat)
+            pvalue. append(p)
+        df = pd.DataFrame({" ARCH_stat":  ARCHstat, "ARCH_pvalue":  pvalue}, index=[lags])
+    return df
+
 row3_1.subheader("Testing the {}'s Return".format(symbol))
-ljbox_test = row3_1.checkbox("Check the Ljung–Box test result for {}".format(symbol))
-ARCH_test = row3_1.checkbox("Check the ARCH test result for {}".format(symbol))
+ljbox_test = row3_1.checkbox("Check the Ljung–Box test result for {}'s return and squared return".format(symbol))
+ARCH_test = row3_1.checkbox("Check the ARCH test result for {}'s mean-corrected return".format(symbol))
 if ljbox_test:
     row3_2.write("")
     row3_2.write("")
@@ -186,6 +202,15 @@ if ljbox_test:
     row3_2.write("**Ljung–Box test for the {}'s squared return series**".format(symbol))
     R2_test =sm.stats.acorr_ljungbox(R**2, lags=ljboxlags, return_df=True)
     row3_2.write(R2_test)
+
+if ARCH_test:
+    row3_2.write("")
+    row3_2.write("")
+    ARCHlags = row3_2.slider('Slide me to choose the lags for ARCH test', min_value=5, max_value=50, step = 1, value = 20)
+    row3_1.write("**ARCH test for the {}'s return series**".format(symbol))
+    ARCH = ARCH_test(R - np.mean(R), lags=ARCHlags, return_df=True)
+    row3_1.write(ARCH)
+
 
 
 
