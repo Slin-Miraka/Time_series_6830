@@ -82,6 +82,8 @@ data.index = data["Date"].dt.strftime('%Y-%m-%d').tolist()
 
 #df = data.set_index(["Date"])
 R = np.log(data.iloc[:,4].pct_change().dropna()+1) * 100;
+adfuller_p_value = sm.tsa.stattools.adfuller(R)[1]
+
 
 left_col.subheader("{} price series over {} to {}".format(symbol, START_DATE, END_DATE))
 plt.figure(figsize=(20,6))
@@ -89,7 +91,7 @@ data.iloc[:,4].plot(label = "prices");#plt.legend();
 #plt.xlim(data.index.min(), data.index.max())
 left_col.pyplot(plt)
 
-left_col.subheader("{} return series".format(symbol))
+left_col.subheader("{} return series (Dickey-Fuller: p={0:.4f})".format(symbol, adfuller_p_value))
 plt.figure(figsize=(20,6))
 R.plot(label = "return");#plt.legend();
 
