@@ -216,7 +216,7 @@ if ARCH_test:
         p =  sm.stats.diagnostic.het_arch(y, nlags = i)[1]
         ARCHstat. append(stat)
         pvalue. append(p)
-    df = pd.DataFrame({" ARCH_stat":  ARCHstat, "ARCH_pvalue":  pvalue}, index=range(1,ARCHlags+1))
+    df = pd.DataFrame({"ARCH_stat": ARCHstat, "ARCH_pvalue": pvalue}, index=range(1,ARCHlags+1))
     row3_1.write(df)
 
 st.write(ARCH_test(R, lags=1))
