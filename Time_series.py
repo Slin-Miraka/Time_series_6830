@@ -225,13 +225,13 @@ with expdr:
         emoji = "✅"
     else:
         emoji = "❎"
-    st.write(f"***The {symbol}'s return is normal distributed:*** {emoji}:")
-    lbpvalue = sm.stats.acorr_ljungbox(R, lags=[20], return_df=True).iloc[:,1]
-    if 0.05 > lbpvalue:
+    st.write(f"***The {symbol}'s return is normal distributed:*** {emoji}")
+    lbpvalue = sm.stats.acorr_ljungbox(std_residual, lags=[20])[1]
+    if np.array(0.05) > lbpvalue:
         emoji = "✅"
     else:
         emoji = "❎"
-    st.write(f"***The {symbol}'s return has AR effect:*** {lbpvalue}:")
+    st.write(f"***The {symbol}'s return has AR effect:*** {emoji}")
 
 
 
