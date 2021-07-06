@@ -222,16 +222,16 @@ st.subheader("Results and Summary")
 expdr = st.beta_expander('Show the results and summary!')
 with expdr:
     if 0.05 < jb_p_value:
-        emoji = "✔️"
+        emoji = "✅"
     else:
         emoji = "❎"
     st.write(f"***The {symbol}'s return is normal distributed:*** {emoji}:")
     lbpvalue = sm.stats.acorr_ljungbox(R, lags=[20], return_df=True).iloc[:,1]
     if 0.05 > lbpvalue:
-        emoji = "✔️"
+        emoji = "✅"
     else:
         emoji = "❎"
-    st.write(f"***The {symbol}'s return has AR effect:*** {emoji}:")
+    st.write(f"***The {symbol}'s return has AR effect:*** {lbpvalue}:")
 
 
 
