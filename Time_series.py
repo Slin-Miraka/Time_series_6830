@@ -158,9 +158,10 @@ left_col.subheader("ACF or PACF of {}'s return series".format(symbol))
 
 row2_1, row2_2 = st.beta_columns((1,5))
 
-row2_1.markdown("✅    Return's ACF. vs. Squred Return's ACF")
-PACF = row2_1.checkbox("Return's ACF. vs. Return's PACF")
-lag = row2_1.selectbox('Select the lags for plot', (20, 40, 60, 80, 100))
+with row2_1:
+    st.markdown("✅    Return's ACF. vs. Squred Return's ACF")
+    PACF = st.checkbox("Return's ACF. vs. Return's PACF")
+    lag = st.selectbox('Select the lags for plot', (20, 40, 60, 80, 100))
 
 if PACF:
     fig = PACF_plot(R, lags = lag, figsize=(20,5),Title = "return", simbol = symbol)    
