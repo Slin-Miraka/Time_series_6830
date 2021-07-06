@@ -171,7 +171,7 @@ row2_2.pyplot(fig)
 
 st.subheader("{}'s Return Statistics".format(symbol))
 expdr = st.beta_expander('Show more info in column!')
-st.write(statr)
+expdr.write(statr)
 
 right_col.subheader("Testing the {}'s Return".format(symbol))
 ljbox_test = right_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
