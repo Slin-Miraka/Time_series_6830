@@ -193,8 +193,6 @@ if ARCH_test:
     mean_c_return = np.array(R - np.mean(R))
     row3_2.write("")
     row3_2.write("")
-    row3_2.write("")
-    row3_2.write("")
     ARCHlags = row3_2.slider('Slide me to choose the lags for ARCH test', min_value=5, max_value=50, step = 1, value = 20)
     row3_1.write("**ARCH test for the {}'s mean-corrected return series**".format(symbol))
     ARCHstat = []
