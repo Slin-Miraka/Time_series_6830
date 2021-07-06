@@ -158,11 +158,12 @@ lag = right_col.slider('Slide me to choose the lags for plot', min_value=20, max
 
 row2_1 = st.beta_columns(1)
 
-if PACF:
-    fig = PACF_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)    
-else:
-    fig = autocorrelation_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)
-row2_1.pyplot(fig)
+with row2_1:
+    if PACF:
+        fig = PACF_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)    
+    else:
+        fig = autocorrelation_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)
+    st.pyplot(fig)
 
 
 left_col.subheader("{}'s Return Statistics".format(symbol))
