@@ -175,11 +175,11 @@ ljbox_test = row3_1.checkbox("Check the Ljung–Box test result for {}".format(s
 ARCH_test = row3_1.checkbox("Check the ARCH test result for {}".format(symbol))
 if ljbox_test:
     row3_1.write("Ljung–Box test for {}".format(symbol))
-    ljboxlags = row3_1.slider('Slide me to choose the lags', min_value=5, max_value=50, step = 1, value = 20)
-    row3_1.write("Ljung–Box test for the {}'s return series".format(symbol))
+    ljboxlags = row3_2.slider('Slide me to choose the lags', min_value=5, max_value=50, step = 1, value = 20)
+    row3_2.write("Ljung–Box test for the {}'s return series".format(symbol))
     R_test = sm.stats.acorr_ljungbox(R, lags=ljboxlags, return_df=True)
     row3_2.write(R_test)
-    row3_1.write("Ljung–Box test for the {}'s squared return series".format(symbol))
+    row3_2.write("Ljung–Box test for the {}'s squared return series".format(symbol))
     R2_test =sm.stats.acorr_ljungbox(R**2, lags=ljboxlags, return_df=True)
     row3_2.write(R2_test)
 
