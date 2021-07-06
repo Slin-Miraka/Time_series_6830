@@ -120,7 +120,7 @@ plt.plot(bins, best_fit_line, label="Nomal");plt.legend()
 right_col.pyplot(plt)
 jb_p_value = stats.jarque_bera(R)[1]
 
-right_col.subheader("QQ-plot of {}'s return series ".format(symbol) + "Jarque bera: stat={1:.5f}".format(jb_p_value))
+right_col.subheader("QQ-plot of {}'s return series ".format(symbol) + "(Jarque bera: stat={0:.4f})".format(jb_p_value))
 fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
