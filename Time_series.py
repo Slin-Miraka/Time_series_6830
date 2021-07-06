@@ -151,7 +151,7 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
     plt.tight_layout()  
 
-left.subheader("ACF or PACF of {}'s return series".format(symbol))
+left_col.subheader("ACF or PACF of {}'s return series".format(symbol))
 left_col.markdown("✅    Return's ACF. vs. Squred Return's ACF")
 PACF = left_col.checkbox("Return's ACF. vs. Return's PACF")
 lag = right_col.slider('Slide me to choose the lags', min_value=20, max_value=100, step = 5, value = 50)
