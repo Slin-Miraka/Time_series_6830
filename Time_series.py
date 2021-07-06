@@ -204,7 +204,7 @@ if ljbox_test:
     row3_2.write(R2_test)
 
 if ARCH_test:
-    mean_c_return = R - np.mean(R)
+    mean_c_return = np.array(R - np.mean(R))
     row3_2.write("")
     row3_2.write("")
     ARCHlags = row3_2.slider('Slide me to choose the lags for ARCH test', min_value=5, max_value=50, step = 1, value = 20)
