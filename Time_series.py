@@ -91,7 +91,7 @@ data.iloc[:,4].plot(label = "prices");#plt.legend();
 #plt.xlim(data.index.min(), data.index.max())
 left_col.pyplot(plt)
 
-left_col.subheader("{} return series".format(symbol) + "(Dickey-Fuller: p={0:.4f})".format(adfuller_p_value))
+left_col.subheader("{} return series ".format(symbol) + "(Dickey-Fuller: p={0:.4f})".format(adfuller_p_value))
 plt.figure(figsize=(20,6))
 R.plot(label = "return");#plt.legend();
 
@@ -118,9 +118,9 @@ best_fit_line = norm.pdf(bins, mu, sigma)
 plt.plot(bins, best_fit_line, label="Nomal");plt.legend()
 
 right_col.pyplot(plt)
+jb_p_value = stats.jarque_bera(R)[1]
 
-
-right_col.subheader("QQ-plot of {}'s return series".format(symbol))
+right_col.subheader("QQ-plot of {}'s return series ".format(symbol) + "Jarque bera: stat={1:.5f}".format(jb_p_value))
 fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
