@@ -232,6 +232,19 @@ with expdr:
     else:
         emoji = "❎"
     st.write(f"***The {symbol}'s return has AR effect:*** {emoji}")
+    lb2pvalue = sm.stats.acorr_ljungbox(R**2, lags=[20])[1]
+    if 0.05 > lb2pvalue:
+        emoji = "✅"
+    else:
+        emoji = "❎"
+    st.write(f"***The {symbol}'s squared return has AR effect:*** {emoji}")
+    mean_return = np.array(R - np.mean(R))
+    archpvalue = sm.stats.diagnostic.het_arch(mean_return, nlags = i)[1]
+    if 0.05 > archpvalue:
+        emoji = "✅"
+    else:
+        emoji = "❎"
+    st.write(f"***The {symbol}'s mean-corrected return has ARCH effect:*** {emoji}")
 
 
 
