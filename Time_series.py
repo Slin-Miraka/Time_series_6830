@@ -208,7 +208,7 @@ if ARCH_test:
     row3_2.write("")
     ARCHlags = row3_2.slider('Slide me to choose the lags for ARCH test', min_value=5, max_value=50, step = 1, value = 20)
     row3_1.write("**ARCH test for the {}'s return series**".format(symbol))
-    ARCH = ARCH_test(R - np.mean(R), lags=ARCHlags, return_df=True)
+    ARCH = ARCH_test(R - np.mean(R), lags=ARCHlags)
     row3_1.write(ARCH)
 
 
