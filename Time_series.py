@@ -160,7 +160,7 @@ row2_1, row2_2 = st.beta_columns((1,5))
 
 row2_1.markdown("✅    Return's ACF. vs. Squred Return's ACF")
 PACF = row2_1.checkbox("Return's ACF. vs. Return's PACF")
-lag = row2_1.slider('Slide me to choose the lags for plot', min_value=20, max_value=100, step = 20, value = 20)
+lag = row2_1.selectbox('Select the lags for plot', (20, 40, 60, 80, 100))
 
 if PACF:
     fig = PACF_plot(R, lags = lag, figsize=(20,5),Title = "return", simbol = symbol)    
