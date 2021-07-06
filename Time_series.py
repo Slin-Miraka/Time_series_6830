@@ -112,7 +112,7 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
     fig = plt.figure(figsize=figsize)
     layout = (2, 1)
     acf_ax = plt.subplot2grid(layout, (0, 0))
-    acf2_ax = plt.subplot2grid(layout, (1, 0))
+    acf2_ax = plt.subplot2grid(layout, (0, 1))
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "{}'s Squared {} Autocorrelation Plot".format(simbol,Title))
@@ -126,7 +126,7 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
     fig = plt.figure(figsize=figsize)
     layout = (2, 1)
     acf_ax = plt.subplot2grid(layout, (0, 0))
-    pacf_ax = plt.subplot2grid(layout, (1, 0))
+    pacf_ax = plt.subplot2grid(layout, (0, 1))
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
