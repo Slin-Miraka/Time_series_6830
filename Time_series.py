@@ -212,6 +212,8 @@ if ARCH_test:
     ARCH_ = ARCH_test(mean_c_return, lags=int(ARCHlags))
     row3_1.write(ARCH_)
 
+st.write(ARCH_test(R, lags=1))
+
 
 
 
