@@ -154,12 +154,12 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
 left_col.subheader("ACF or PACF of {}'s return series".format(symbol))
 left_col.markdown("✅    Return's ACF. vs. Squred Return's ACF")
 PACF = left_col.checkbox("Return's ACF. vs. Return's PACF")
-lag = right_col.slider('Slide me to choose the lags', min_value=20, max_value=100, step = 5, value = 50)
+lag = left_col.slider('Slide me to choose the lags for plot', min_value=20, max_value=100, step = 5, value = 50)
 
 if PACF:
-    fig = PACF_plot(R, lags = lag, figsize=(10,6),Title = "return", simbol = symbol)    
+    fig = PACF_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)    
 else:
-    fig = autocorrelation_plot(R, lags = lag, figsize=(10,6),Title = "return", simbol = symbol)
+    fig = autocorrelation_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)
 left_col.pyplot(fig)
 
 
@@ -167,15 +167,15 @@ left_col.subheader("{}'s Return Statistics".format(symbol))
 expdr = left_col.beta_expander('Show more info in column!')
 expdr.write(statr)
 
-left_col.subheader("Testing the {}'s Return".format(symbol))
-ljbox_test = left_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
-ARCH_test = left_col.checkbox("Check the ARCH test result for {}".format(symbol))
+right_col.subheader("Testing the {}'s Return".format(symbol))
+ljbox_test = right_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
+ARCH_test = right_col.checkbox("Check the ARCH test result for {}".format(symbol))
 if ljbox_test:
-    left_col.write("Ljung–Box test for {}".format(symbol))
+    right_col.write("Ljung–Box test for {}".format(symbol))
     ljboxlags = right_col.slider('Slide me to choose the lags', min_value=5, max_value=50, step = 1, value = 20)
-    left_col.write("Ljung–Box test for the {}'s return series".format(symbol))
+    right_col.write("Ljung–Box test for the {}'s return series".format(symbol))
     sm.stats.acorr_ljungbox(R, lags=ljboxlags, return_df=True)
-    left_col.write("Ljung–Box test for the {}'s squared return series".format(symbol))
+    right_col.write("Ljung–Box test for the {}'s squared return series".format(symbol))
     sm.stats.acorr_ljungbox(R**2, lags=ljboxlags, return_df=True)
 
 
