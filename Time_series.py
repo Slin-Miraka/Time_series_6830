@@ -110,7 +110,7 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
         
     #with plt.style.context(style):    
     fig = plt.figure(figsize=figsize)
-    layout = (2, 2)
+    layout = (2, 1)
     acf_ax = plt.subplot2grid(layout, (0, 0))
     acf2_ax = plt.subplot2grid(layout, (1, 0))
 
