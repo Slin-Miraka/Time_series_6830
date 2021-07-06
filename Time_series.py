@@ -163,7 +163,7 @@ st.pyplot(fig)
 st.subheader("{}'s Return Statistics".format(symbol))
 st.write(statr)
 
-st.subheader("Testing the {}'s Return".format(symbol))
+left_col.subheader("Testing the {}'s Return".format(symbol))
 ljbox_test = left_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
 ARCH_test = left_col.checkbox("Check the ARCH test result for {}".format(symbol))
 if ljbox_test:
