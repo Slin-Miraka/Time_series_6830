@@ -226,8 +226,8 @@ with expdr:
     else:
         emoji = "❎"
     st.write(f"***The {symbol}'s return is normal distributed:*** {emoji}")
-    lbpvalue = sm.stats.acorr_ljungbox(std_residual, lags=[20])[1]
-    if np.array(0.05) > lbpvalue:
+    lbpvalue = sm.stats.acorr_ljungbox(R, lags=[20])[1]
+    if 0.05 > lbpvalue:
         emoji = "✅"
     else:
         emoji = "❎"
