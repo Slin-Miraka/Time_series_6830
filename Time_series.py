@@ -219,7 +219,7 @@ st.subheader("{}'s Return Statistics".format(symbol))
 st.write(statr)
 
 st.subheader("Results and Summary")
-expdr = st.beta_expander('Show the results and summary!')
+expdr = st.beta_expander('Show the results and summary')
 with expdr:
     if 0.05 < jb_p_value:
         emoji = "✅"
