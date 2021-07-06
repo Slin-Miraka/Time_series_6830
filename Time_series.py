@@ -104,6 +104,25 @@ def stat(x) :
 statr = pd.DataFrame(stat(R), columns=["{}'s Return".format(symbol)]).T                                                        
 statr = statr.round({'min':4,'25% quantile':4,'median':4,'75% quantile':4,'mean':4,'max':4,'var':4,'std':4,'skew':4,'kurt':4}) 
                                                         
+
+
+                                                  
+
+right_col.subheader("Histogram of {}'s return series vs. Nomal distribution".format(symbol))
+plt.figure(figsize=(8.95,6))
+_, bins, _ = plt.hist(R, 50, density=1, alpha=0.5, label="Frequency", rwidth = 20)
+mu, sigma = norm.fit(R)
+best_fit_line = norm.pdf(bins, mu, sigma)
+plt.plot(bins, best_fit_line, label="Nomal");plt.legend()
+
+right_col.pyplot(plt)
+
+
+right_col.subheader("QQ-plot of {}'s return series".format(symbol))
+fig, ax = plt.subplots(figsize=(9.5,6))
+sm.qqplot(R, line ='45',ax = ax)
+right_col.pyplot(plt)
+
 def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
     if not isinstance(y, pd.Series):
         y = pd.Series(y)
@@ -131,23 +150,6 @@ def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
     plt.tight_layout()  
-
-                                                  
-
-right_col.subheader("Histogram of {}'s return series vs. Nomal distribution".format(symbol))
-plt.figure(figsize=(8.95,6))
-_, bins, _ = plt.hist(R, 50, density=1, alpha=0.5, label="Frequency", rwidth = 20)
-mu, sigma = norm.fit(R)
-best_fit_line = norm.pdf(bins, mu, sigma)
-plt.plot(bins, best_fit_line, label="Nomal");plt.legend()
-
-right_col.pyplot(plt)
-
-
-right_col.subheader("QQ-plot of {}'s return series".format(symbol))
-fig, ax = plt.subplots(figsize=(9.5,6))
-sm.qqplot(R, line ='45',ax = ax)
-right_col.pyplot(plt)
 
 left.subheader("ACF or PACF of {}'s return series".format(symbol))
 left_col.markdown("✅    Return's ACF. vs. Squred Return's ACF")
