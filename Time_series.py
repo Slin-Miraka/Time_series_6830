@@ -212,8 +212,8 @@ if ARCH_test:
     ARCHstat = []
     pvalue = []
     for i in range(1,ARCHlags+1):
-        stat = sm.stats.diagnostic.het_arch(y, nlags = i)[0]
-        p =  sm.stats.diagnostic.het_arch(y, nlags = i)[1]
+        stat = sm.stats.diagnostic.het_arch(mean_c_return, nlags = i)[0]
+        p =  sm.stats.diagnostic.het_arch(mean_c_return, nlags = i)[1]
         ARCHstat. append(stat)
         pvalue. append(p)
     df = pd.DataFrame({"ARCH_stat": ARCHstat, "ARCH_pvalue": pvalue}, index=range(1,ARCHlags+1))
