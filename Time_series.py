@@ -168,21 +168,30 @@ else:
     fig = autocorrelation_plot(R, lags = lag, figsize=(20,5),Title = "return", simbol = symbol)
 row2_2.pyplot(fig)
 
+row3_1, row3_2 = st.beta_columns((3,2))
+
+row3_1.subheader("Testing the {}'s Return".format(symbol))
+ljbox_test = row3_1.checkbox("Check the Ljung–Box test result for {}".format(symbol))
+ARCH_test = row3_1.checkbox("Check the ARCH test result for {}".format(symbol))
+if ljbox_test:
+    row3_1.write("Ljung–Box test for {}".format(symbol))
+    ljboxlags = row3_1.slider('Slide me to choose the lags', min_value=5, max_value=50, step = 1, value = 20)
+    row3_1.write("Ljung–Box test for the {}'s return series".format(symbol))
+    R_test = sm.stats.acorr_ljungbox(R, lags=ljboxlags, return_df=True)
+    row3_2.write(R_test)
+    row3_1.write("Ljung–Box test for the {}'s squared return series".format(symbol))
+    R2_test =sm.stats.acorr_ljungbox(R**2, lags=ljboxlags, return_df=True)
+    row3_2.write(R2_test)
+
+
+
 
 st.subheader("{}'s Return Statistics".format(symbol))
-expdr = st.beta_expander('Show more info in column!')
-expdr.write(statr)
+#expdr = st.beta_expander('Show more info in column!')
+#expdr.write(statr)
+st.write(statr)
 
-right_col.subheader("Testing the {}'s Return".format(symbol))
-ljbox_test = right_col.checkbox("Check the Ljung–Box test result for {}".format(symbol))
-ARCH_test = right_col.checkbox("Check the ARCH test result for {}".format(symbol))
-if ljbox_test:
-    right_col.write("Ljung–Box test for {}".format(symbol))
-    ljboxlags = right_col.slider('Slide me to choose the lags', min_value=5, max_value=50, step = 1, value = 20)
-    right_col.write("Ljung–Box test for the {}'s return series".format(symbol))
-    sm.stats.acorr_ljungbox(R, lags=ljboxlags, return_df=True)
-    right_col.write("Ljung–Box test for the {}'s squared return series".format(symbol))
-    sm.stats.acorr_ljungbox(R**2, lags=ljboxlags, return_df=True)
+
 
 
 
