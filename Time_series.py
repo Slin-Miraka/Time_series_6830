@@ -123,7 +123,7 @@ fig, ax = plt.subplots(figsize=(9.5,6))
 sm.qqplot(R, line ='45',ax = ax)
 right_col.pyplot(plt)
 
-def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
+def autocorrelation_plot(y, lags=None, figsize=(12, 5),Title = None, simbol = None):
     if not isinstance(y, pd.Series):
         y = pd.Series(y)
         
@@ -137,7 +137,7 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None
     smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "{}'s Squared {} Autocorrelation Plot".format(simbol,Title))
     plt.tight_layout()   
 
-def PACF_plot(y, lags=None, figsize=(12, 5), style='bmh',Title = None, simbol = None):
+def PACF_plot(y, lags=None, figsize=(12, 5),Title = None, simbol = None):
     if not isinstance(y, pd.Series):
         y = pd.Series(y)
         
