@@ -157,9 +157,9 @@ PACF = left_col.checkbox("Return's ACF. vs. Return's PACF")
 lag = right_col.slider('Slide me to choose the lags', min_value=20, max_value=100, step = 5, value = 50)
 
 if PACF:
-    fig = PACF_plot(R, lags = lag, figsize=(10,8),Title = "return", simbol = symbol)    
+    fig = PACF_plot(R, lags = lag, figsize=(10,6),Title = "return", simbol = symbol)    
 else:
-    fig = autocorrelation_plot(R, lags = lag, figsize=(10,8),Title = "return", simbol = symbol)
+    fig = autocorrelation_plot(R, lags = lag, figsize=(10,6),Title = "return", simbol = symbol)
 left_col.pyplot(fig)
 
 
