@@ -225,7 +225,7 @@ with expdr:
         emoji = "white_check_mark"
     else:
         emoji = "no_entry_sign"
-    st.write(f"***The {symbol}'s return is normal distributed.:*** {emoji}:")
+    st.subheader(f"***The {symbol}'s return is normal distributed.:*** {emoji}:")
 
 
 
