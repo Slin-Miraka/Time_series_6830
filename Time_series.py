@@ -129,9 +129,9 @@ def autocorrelation_plot(y, lags=None, figsize=(12, 5),Title = None, simbol = No
         
     #with plt.style.context(style):    
     fig = plt.figure(figsize=figsize)
-    layout = (2, 1)
+    layout = (1, 2)
     acf_ax = plt.subplot2grid(layout, (0, 0))
-    acf2_ax = plt.subplot2grid(layout, (1, 0))
+    acf2_ax = plt.subplot2grid(layout, (0, 1))
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_acf(y ** 2, lags=lags, ax=acf2_ax, title= "{}'s Squared {} Autocorrelation Plot".format(simbol,Title))
@@ -143,9 +143,9 @@ def PACF_plot(y, lags=None, figsize=(12, 5),Title = None, simbol = None):
         
     #with plt.style.context(style):    
     fig = plt.figure(figsize=figsize)
-    layout = (2, 1)
+    layout = (1, 2)
     acf_ax = plt.subplot2grid(layout, (0, 0))
-    pacf_ax = plt.subplot2grid(layout, (1, 0))
+    pacf_ax = plt.subplot2grid(layout, (0, 1))
 
     smt.graphics.plot_acf(y, lags=lags, ax=acf_ax, title= "{}'s {} Autocorrelation Plot".format(simbol, Title))
     smt.graphics.plot_pacf(y, lags=lags, ax=pacf_ax, title= "{}'s {} Partial Autocorrelation Plot".format(simbol,Title))
@@ -154,13 +154,15 @@ def PACF_plot(y, lags=None, figsize=(12, 5),Title = None, simbol = None):
 left_col.subheader("ACF or PACF of {}'s return series".format(symbol))
 left_col.markdown("✅    Return's ACF. vs. Squred Return's ACF")
 PACF = left_col.checkbox("Return's ACF. vs. Return's PACF")
-lag = left_col.slider('Slide me to choose the lags for plot', min_value=20, max_value=100, step = 5, value = 50)
+lag = right_col.slider('Slide me to choose the lags for plot', min_value=20, max_value=100, step = 5, value = 50)
+
+row2_1 = st.beta_columns(1)
 
 if PACF:
     fig = PACF_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)    
 else:
     fig = autocorrelation_plot(R, lags = lag, figsize=(10,5),Title = "return", simbol = symbol)
-left_col.pyplot(fig)
+row2_1.pyplot(fig)
 
 
 left_col.subheader("{}'s Return Statistics".format(symbol))
