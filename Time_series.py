@@ -245,6 +245,11 @@ with expdr:
     else:
         emoji = "❎"
     st.write(f"***The {symbol}'s mean-corrected return has ARCH effect:*** {emoji}")
+    
+st.subheader("Modeling")
+mean_equation = st.button("Modeling for Mean Equation")
+vol_equation = st.button("Modeling for Volatility Equation")
+
 
 
 
