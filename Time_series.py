@@ -63,7 +63,7 @@ START_DATE, END_DATE = get_date()
     
     #data = yf.download(tickers, start=START_DATE,end=END_DATE, adjusted=True)
     #return data
-global data
+
 data = yf.download(symbol, start=START_DATE,end=END_DATE, adjusted=True)
 data = data.reset_index()
 data.index = data["Date"].dt.strftime('%Y-%m-%d').tolist()
